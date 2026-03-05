@@ -26,11 +26,11 @@ const data: ISiteMetadataResult = {
     },
     {
       name: 'Blog',
-      url: 'https://celiachu.github.io',
+      url: 'https://lyberti.site/',
     },
     {
       name: 'Weekly',
-      url: 'https://celiachu.github.io/series/weekly-report',
+      url: 'https://lyberti.site/weekly-report',
     },
   ],
 };
