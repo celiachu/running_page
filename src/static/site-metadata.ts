@@ -26,11 +26,11 @@ const data: ISiteMetadataResult = {
     },
     {
       name: 'Blog',
-      url: 'https://lyberti.site/',
+      url: 'https://blog.lyberti.site/',
     },
     {
       name: 'Weekly',
-      url: 'https://lyberti.site/weekly-report',
+      url: 'https://blog.lyberti.site/weekly-report',
     },
   ],
 };
