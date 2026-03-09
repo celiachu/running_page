@@ -1,0 +1,59 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main # 只有在推送到 main 分支时触发，如果是其他分支请修改
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10 🐍
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Python Dependencies 📦
+        run: |
+          pip install -r requirements.txt
+
+      - name: Sync Coros Data 🏃
+        env:
+          COROS_USER: ${{ secrets.COROS_USER }}
+          COROS_PASS: ${{ secrets.COROS_PASS }}
+        run: |
+          python3 run_page/coros_sync.py "$COROS_USER" "$COROS_PASS"
+          # 如果同步后需要生成 activities.json 或更新数据库，请确保在此处执行相关指令
+          # 例如：python3 run_page/gen_svg.py --from-db --type github --output assets/github.svg
+
+      - name: Install pnpm 📦
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Set up Node.js ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install and Build 🔧
+        run: |
+          pnpm install
+          pnpm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # 构建生成的目录
+          branch: publish # 目标分支
+          clean: true # 部署前清理目标分支
