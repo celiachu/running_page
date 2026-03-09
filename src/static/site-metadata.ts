@@ -15,8 +15,8 @@ const getBasePath = () => {
 };
 
 const data: ISiteMetadataResult = {
-  siteTitle: 'Celiachu\'s Running Page',
-  siteUrl: 'https://running.lyberti.site/',
+  siteTitle: 'Lyberti\'s Running Page',
+  siteUrl: 'https://running.lyberti.xyz/',
   logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtc69JxHNcmN1ETpMUX4dozAgAN6iPjWalQ&usqp=CAU',
   description: 'Personal site and blog',
   navLinks: [
@@ -26,11 +26,11 @@ const data: ISiteMetadataResult = {
     },
     {
       name: 'Blog',
-      url: 'https://blog.lyberti.site/',
+      url: 'https://blog.lyberti.xyz/',
     },
     {
       name: 'Weekly',
-      url: 'https://blog.lyberti.site/weekly-report',
+      url: 'https://blog.lyberti.xyz/weekly-report',
     },
   ],
 };
